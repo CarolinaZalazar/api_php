@@ -26,8 +26,8 @@
         }
     
         //obtener un array con los datos de la base de datos
-        public function obtenerDatos($sqlstr){
-            $results = $this->conexion->query($sqlstr);
+        public function obtenerDatos($query){
+            $results = $this->conexion->query($query);
             $resultArray = array();
             if($results){
                 foreach($results as $key){
@@ -39,13 +39,13 @@
             }  
         }
         //Guardar datos en la base de datos(update - insert - delete)
-        public function nonQuery($sqlstr){
-            $results = $this->conexion->query($sqlstr);
+        public function nonQuery($query){
+            $results = $this->conexion->query($query);
             return $this->conexion->affected_rows;
         }
         //Obtener el id de un registro(update - insert- delete)
-        public function nonQueryId($sqlstr){
-            $results = $this->conexion->query($sqlstr);
+        public function nonQueryId($query){
+            $results = $this->conexion->query($query);
             $filas = $this->conexion->affected_rows;
             if($filas >= 1){
                 return $this->conexion->insert_id;
